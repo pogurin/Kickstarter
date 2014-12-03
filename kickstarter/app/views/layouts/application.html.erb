@@ -9,7 +9,7 @@
 <body>
 
 	<nav>
-		<%= link_to "Home", projects_url %>
+		<%= link_to "Home", projects_url %> |
 		<% if current_user %> <!-- Do not need to define this with sorcery -->
 			<%= link_to "Logout", :logout, method: :get %>
 		<% else %>
