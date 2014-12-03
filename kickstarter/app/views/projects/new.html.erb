@@ -1,2 +1,33 @@
-<h1>Projects#new</h1>
-<p>Find me in app/views/projects/new.html.erb</p>
+<h1>New Project</h1>
+
+<%= form_for @project do |f| %>
+	<div class="field">
+		<%= f.label :title %><br/>
+		<%= f.text_field :title %>
+	</div>
+	<div class="field">
+		<%= f.label :description %><br/>
+		<%= f.text_field :description %>
+	</div>
+	<div class="field">
+		<%= f.label :funding_goal %><br/>
+		<%= f.text_field :funding_goal %>
+	</div>
+	<div class="field">
+		<%= f.label :end_date %><br/>
+		<%= f.datetime_select :end_date, ampm: true, default: 1.months.from_now, discard_hour: true, discard_minute: true, class: "form_fields" %>
+	</div>
+	<div>
+		<%= f.hidden_field :start_date, :value => Time.now %>
+	</div>
+	<h3><em>Rewards</em></h3>
+		<%= f.fields_for :rewards do %>
+			<%= render 'reward_fields' %>
+		<% end %>
+
+		<%= link_to_add_association 'Add another reward', f, :rewards %>
+
+ 	<div class="action">
+		<%= f.submit "Submit"%>
+	</div>
+<% end %>
