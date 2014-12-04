@@ -21,11 +21,13 @@
 		<%= f.hidden_field :start_date, :value => Time.now %>
 	</div>
 	<h3><em>Rewards</em></h3>
-		<%= f.fields_for :rewards do %>
-			<%= render 'reward_fields' %>
-		<% end %>
+		<div id="rewards">
+			<%= f.fields_for :rewards do %>
+				<%= render 'reward_fields' %>
+			<% end %>
 
-		<%= link_to_add_association 'Add another reward', f, :rewards %>
+			<%= link_to_add_association 'Add another reward', f, :rewards %>
+		</div>
 
  	<div class="action">
 		<%= f.submit "Submit"%>
