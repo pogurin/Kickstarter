@@ -1,2 +1,18 @@
-<h1>Projects#show</h1>
-<p>Find me in app/views/projects/show.html.erb</p>
+<h1><%= @project.title %></h1>
+<p>Description: <%= @project.description %><br />
+  Funding goal: <%= @project.funding_goal %><br />
+  Start date: <%= @project.start_date %><br />
+  End date: <%= @project.end_date %><br />
+</p>
+
+<h3><em>Rewards</em></h3>
+	<% @project.rewards.each do |reward| %>
+		<p>
+			<%= reward.name %><br />
+			What am I? <%= reward.description %><br />
+			How much do I cost? <%= reward.amount %><br />
+			Cut-off limit: <%= reward.backer_limit %><br />
+		</p>
+	<% end %>
+
+
