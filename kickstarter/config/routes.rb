@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   resources :projects
   resources :users, only: [:new, :create, :show]
+  resources :pledges, only: [:new, :create, :destroy, :show]
+  resources :rewards, only: [:new, :create, :destroy, :show]
   resources :user_sessions, only: [:new, :create, :destroy]
 
   get 'login' => 'user_sessions#new', as: 'login'
