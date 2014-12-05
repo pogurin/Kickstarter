@@ -21,6 +21,9 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    # project funded amount should be in the project controller and not the pledge controller
+    @project.funded = @project.pledges.pluck(:amount).sum
+    
   end
 
   def edit

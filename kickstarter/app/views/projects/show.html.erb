@@ -3,6 +3,7 @@
   Funding goal: <%= @project.funding_goal %><br />
   Start date: <%= @project.start_date.strftime("%A, %d %b %Y") %><br />
   End date: <%= @project.end_date.strftime("%A, %d %b %Y") %><br />
+  Amount to date: <%= @project.funded %>
 </p>
 
 <% if logged_in? %>
