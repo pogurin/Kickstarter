@@ -1,0 +1,17 @@
+When a new pledge is created 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Taco = Projects.new(tile: "Carribiana",funding goal: 30000, start_date: time.now)
+taco.amount 

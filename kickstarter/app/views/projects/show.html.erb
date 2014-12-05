@@ -1,18 +1,43 @@
 <h1><%= @project.title %></h1>
 <p>Description: <%= @project.description %><br />
   Funding goal: <%= @project.funding_goal %><br />
-  Start date: <%= @project.start_date %><br />
-  End date: <%= @project.end_date %><br />
+  Start date: <%= @project.start_date.strftime("%A, %d %b %Y") %><br />
+  End date: <%= @project.end_date.strftime("%A, %d %b %Y") %><br />
 </p>
 
-<h3><em>Rewards</em></h3>
-	<% @project.rewards.each do |reward| %>
-		<p>
-			<%= reward.name %><br />
-			What am I? <%= reward.description %><br />
-			How much do I cost? <%= reward.amount %><br />
-			Cut-off limit: <%= reward.backer_limit %><br />
-		</p>
+<% if logged_in? %>
+<!-- fix this! -->
+	<% if current_user.id == @project.owner_id %>
+		<div id="project_timing">
+			<!-- There must be a better way to display dates in this format. Oh well! -->
+			Your project is due to end on <%= @project.end_date.strftime("%A, %d %b %Y") %>!
+		</div>
+	<% else %>
+
+
+		<%= form_for Pledge.new do |f| %>
+			<%= f.hidden_field :project_id, value: @project.id %>
+				<%= f.select :amount do %>
+				<option value="10">$10</option>
+				<option value="20">$20</option>
+				<option value="50">$50</option>
+				<option value="100">$100</option>
+			<% end %>
+			<%= f.submit "Pledge" %>
+		<% end %>
 	<% end %>
+<% end %>
+
+	<h3><em>Rewards</em></h3>
+	<% @project.rewards.each do |reward| %>
+	<p>	
+		<%= reward.name %><br />
+		What am I? <%= reward.description %><br />
+		How much do I cost? <%= reward.amount %><br />
+		Cut-off limit: <%= reward.backer_limit %><br />
+	</p>
+	<% end %>
+
+
 
 

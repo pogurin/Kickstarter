@@ -1,0 +1,40 @@
+# paperclip
+# why doesnt rails have default
+# image magick \ Rmagick 
+
+# Helps spouses cheat on one another.
+
+*****Rake Task***** 
+
+# rails g task reports
+# will create a .rake file (open it)
+# funny ruby syntax (DSL) 
+# need to add a descirption
+
+namespace :reports do
+	desc "Project report"
+	task :projects => :enviroment do 
+		latest_projects = Project.where("created_at >= ? ", 1.hour.ago)
+
+		puts "Projects created in the last hour:"
+		puts latest_projects
+	end
+end 
+
+rake reports:projects
+
+*****Rails Testing*****
+# in gem file
+
+group :development, :test do 
+	gem 'rspec-rails', '~> 3.0'
+	gem 'factory-girl_rails'
+end
+
+rails generate rspec:install 
+buisness logic belongs in models
+skinny controller, fat model
+
+
+
+
