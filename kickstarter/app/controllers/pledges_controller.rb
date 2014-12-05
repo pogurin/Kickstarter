@@ -1,22 +1,26 @@
 class PledgesController < ApplicationController
 	def new
-		@pledge = Pledges.new
+		@pledge = Pledge.new
 	end
 
 	def create
-		@pledge = Pledges.new(pledge_params)
+		@pledge = Pledge.new(pledge_params)
+		@pledge.backer = current_user
+		@pledge.project_id = params[:pledge][:project_id]
+		@pledge.project.funded = @pledge.project.pledges.pluck(:amount).sum
+
 		if @pledge.save
-			redirect_to project_url, notice:"Pledge made you sweetiepie!"
+			redirect_to project_path(@pledge.project), notice:"Pledge made you sweetiepie!"
 		else
 			render 'new'
 		end
 	end
 
 	def show
-		@pledge = Pledges.find(params[:id])
+		@pledge = Pledge.find(params[:id])
 	end 
 	
-private
+	private
 	def pledge_params
 	    params.require(:pledge).permit(:amount)
 	end
