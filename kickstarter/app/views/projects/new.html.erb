@@ -28,8 +28,8 @@
 	</div>
 	<h3><em>Rewards</em></h3>
 		<div id="rewards">
-			<%= f.fields_for :rewards do %>
-				<%= render 'reward_fields' %>
+			<%= f.fields_for :rewards do |reward| %>
+				<%= render 'reward_fields', :f => reward %>
 			<% end %>
 
 			<%= link_to_add_association 'Add another reward', f, :rewards %>
