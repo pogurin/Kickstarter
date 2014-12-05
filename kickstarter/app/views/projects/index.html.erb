@@ -1,13 +1,5 @@
-<<<<<<< HEAD
-<h1>Projects#index</h1>
-<p>Find me in app/views/projects/index.html.erb</p>
 
-<% if current_user %>
-<%= link_to "Go to Profile Page.", user_path(current_user) %>
-<% end %>
-=======
-<h1>All Projects</h1>
-
+<h1>All Projects</h1
 <% @projects.each do |project| %>
 	<p>Name: <%= link_to project.title, project_path(project) %><br />
 	  Description: <%= project.description %><br />
@@ -16,4 +8,3 @@
 	  Funding Goal: <%= project.funding_goal %><br />
 	</p>
 <% end %>
->>>>>>> dafb2b6c9bed20146e8a168c48f5aef7425c65a1
