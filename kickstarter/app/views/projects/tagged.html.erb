@@ -1,0 +1,9 @@
+<h1>Tagged Projects</h1
+<% @projects.each do |project| %>
+	<p>Name: <%= link_to project.title, project_path(project) %><br />
+	  Description: <%= project.description %><br />
+	  Start Date: <%= project.start_date %><br />
+      End Date: <%= project.end_date %><br />
+	  Funding Goal: <%= project.funding_goal %><br />
+	</p>
+<% end %>

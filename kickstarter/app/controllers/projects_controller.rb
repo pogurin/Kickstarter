@@ -19,6 +19,14 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def tagged
+    if params[:tag].present? 
+      @projects = Project.tagged_with(params[:tag])
+    else 
+      @projects = Project.all
+    end  
+  end
+
   def show
     @project = Project.find(params[:id])
     # project funded amount should be in the project controller and not the pledge controller
@@ -47,6 +55,6 @@ class ProjectsController < ApplicationController
 
   private 
   def project_params
-    params.require(:project).permit(:title, :description, :funding_goal, :start_date, :end_date, rewards_attributes: [:name, :backer_limit, :amount, :_destroy, :description], pledges_attributes: [:amount, :id,])
+    params.require(:project).permit(:title, :description, :funding_goal, :start_date, :end_date, :tag_list, rewards_attributes: [:name, :backer_limit, :amount, :_destroy, :description], pledges_attributes: [:amount, :id,])
   end
 end

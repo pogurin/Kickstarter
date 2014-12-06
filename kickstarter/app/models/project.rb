@@ -7,6 +7,8 @@ class Project < ActiveRecord::Base
 	accepts_nested_attributes_for :rewards
 	accepts_nested_attributes_for :pledges
 
+	acts_as_taggable_on :tags
+
 	validates :title, :funding_goal, :description, presence: true
 	validates :funding_goal, numericality: { only_integer: true }
 

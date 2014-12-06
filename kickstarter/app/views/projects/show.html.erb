@@ -3,8 +3,12 @@
   Funding goal: <%= @project.funding_goal %><br />
   Start date: <%= @project.start_date.strftime("%A, %d %b %Y") %><br />
   End date: <%= @project.end_date.strftime("%A, %d %b %Y") %><br />
-  Amount to date: <%= @project.funded %>
 </p>
+
+<% @project.tags.any? %>
+  <% @project.tags.each do |tag| %>
+  <%= link_to tag.name, tagged_url(:tag => tag.name) %>
+<% end %>
 
 <% if logged_in? %>
 <!-- fix this! -->
@@ -12,6 +16,7 @@
 		<div id="project_timing">
 			<!-- There must be a better way to display dates in this format. Oh well! -->
 			Your project is due to end on <%= @project.end_date.strftime("%A, %d %b %Y") %>!
+
 		</div>
 	<% else %>
 
@@ -38,6 +43,8 @@
 		Cut-off limit: <%= reward.backer_limit %><br />
 	</p>
 	<% end %>
+
+
 
 
 
