@@ -2,7 +2,11 @@ class ProjectsController < ApplicationController
   # before_action require_login, except: :index
 
   def index
-    @projects = Project.all
+    @projects = if params[:search]
+      Project.where(category_id: params[:search])
+    else
+      @projects = Project.all
+    end
   end
 
   def new
