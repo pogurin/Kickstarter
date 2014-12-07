@@ -23,7 +23,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     # project funded amount should be in the project controller and not the pledge controller
     @project.funded = @project.pledges.pluck(:amount).sum
-    
+    @user = current_user
   end
 
   def edit

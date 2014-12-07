@@ -29,16 +29,26 @@
 	<% end %>
 <% end %>
 
-	<h3><em>Rewards</em></h3>
-	<% @project.rewards.each do |reward| %>
-	<p>	
-		<%= reward.name %><br />
-		What am I? <%= reward.description %><br />
-		How much do I cost? <%= reward.amount %><br />
-		Cut-off limit: <%= reward.backer_limit %><br />
-	</p>
-	<% end %>
+			
+	<div class="rewardbox", style="width: 200px; height: 200px; background-color: green; "> 
+		<h3><em>Rewards</em></h3>
+		<% @project.rewards.each do |reward| %>
+		<p>	
+			<%= reward.name %><br />
+			What am I? <%= reward.description %><br />
+			How much do I cost? <%= reward.amount %><br />
+			Cut-off limit: <%= reward.backer_limit %><br />
+		</p>
+			<% @user.pledges.each do |pledge| %>	
+				<% if pledge.amount == reward.amount %>
+					this matches dog
+				<% else %>
+				 	this dont
+				<% end %>
 
+			<% end %> 
+		<% end %>
+	</div>
 
 
 
