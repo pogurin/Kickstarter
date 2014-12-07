@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141205162238) do
+ActiveRecord::Schema.define(version: 20141207162353) do
 
   create_table "pledges", force: true do |t|
     t.integer  "amount"
