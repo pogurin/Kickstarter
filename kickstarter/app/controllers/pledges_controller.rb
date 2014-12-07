@@ -5,7 +5,7 @@ class PledgesController < ApplicationController
 
 	def create
 		@pledge = Pledge.new(pledge_params)
-		@pledge.backer = current_user
+		@pledge.backer_id = current_user.id
 		@pledge.project_id = params[:pledge][:project_id]
 
 		if @pledge.save
