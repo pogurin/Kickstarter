@@ -6,7 +6,10 @@
 	<%= submit_tag "Filter!" %>
 <% end %>
 
-<%= render 'projects' %>
+<div id="projects">
+	<%= render 'projects' %>
+</div>
 
 <%= link_to "make a new project", new_project_path %>
 
+<script type="text/javascript" src="projects.js"></script>
