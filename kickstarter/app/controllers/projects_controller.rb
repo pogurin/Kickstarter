@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   # before_action require_login, except: :index
 
   def index
-    @projects = if params[:search]
+    @projects = if (params[:search] && (params[:search].to_i > 0)) #might be a better way to reset filter but this is all I can think of right now
       Project.where(category_id: params[:search])
     else
       @projects = Project.all
