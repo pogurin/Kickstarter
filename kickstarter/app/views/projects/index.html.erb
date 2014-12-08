@@ -2,8 +2,8 @@
 <h1>All Projects</h1>
 
 <%= form_tag projects_path, method: :get, id: 'search-form' do %>
-	<%= text_field_tag :search, params[:search] %>
-	<%= submit_tag "Search" %>
+	<%= select_tag(:search, options_for_select([['Art', 1], ['Food', 2], ['Games', 3], ['Film/Video', 4], ['Music', 5], ['Photography', 6], ['Dance', 7]])) %>
+	<%= submit_tag "Filter!" %>
 <% end %>
 
 <% @projects.each do |project| %>
